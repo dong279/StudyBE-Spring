@@ -6,51 +6,57 @@ import org.springframework.stereotype.Service;
 public class TextTransformService {
     public String upper(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.toUpperCase();      
+        
     }
 
     public String lower(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.toLowerCase();
     }
 
     public String reverse(String text) {
         // TODO
-        throw new RuntimeException();
+        return new StringBuilder(text).reverse().toString();
     }
 
     public int length(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.length();
     }
 
     public String replace(ReplaceRequest request) {
         // TODO
-        throw new RuntimeException();
+        String to = request.to() == null ? "" : request.to();
+        return request.text().replace(request.from(), to);
     }
 
     public int wordCount(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.trim().split("\\s+").length;
     }
 
     public String trim(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.trim();
     }
 
     public String mask(String text) {
         // TODO
-        throw new RuntimeException();
+        int len = text.length();
+        if (len <= 4) {
+            return "*".repeat(len);
+        }
+        return text.substring(0, 2) + "*".repeat(len - 4) + text.substring(len - 2);
     }
 
     public String repeat(RepeatRequest request) {
         // TODO
-        throw new RuntimeException();
-    }
+        return request.text().repeat(request.times());
+        }
 
     public boolean palindrome(String text) {
         // TODO
-        throw new RuntimeException();
+        return text.equals(new StringBuilder(text).reverse().toString());
     }
 }
